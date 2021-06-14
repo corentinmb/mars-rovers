@@ -3,19 +3,18 @@ package fr.corentinmb;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.io.File;
+import java.io.IOException;
 
-/**
- * Unit test for simple App.
- */
 class AppTest
 {
-    /**
-     * Rigorous Test :-)
-     */
     @Test
-    void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    void shouldReturnExpectedOutput() throws IOException {
+        String path = "src/test/resources/input.txt";
+
+        File file = new File(path);
+        String absolutePath = file.getAbsolutePath();
+
+        App.main(new String[] {absolutePath});
     }
 }

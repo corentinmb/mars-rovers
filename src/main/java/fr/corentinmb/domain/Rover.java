@@ -7,6 +7,8 @@ import java.util.List;
 
 @Getter
 public class Rover {
+    private static final String SEPARATOR = " ";
+
     private int x;
     private int y;
     private Orientation orientation;
@@ -20,8 +22,9 @@ public class Rover {
         this.orientation = orientation;
     }
 
-    public void executeInstructions(List<Instruction> instructions){
+    public String executeInstructions(List<Instruction> instructions){
         instructions.forEach(this::move);
+        return this.getX() + SEPARATOR + this.getY() + SEPARATOR + this.getOrientation();
     }
 
     private void move(Instruction instruction) {
