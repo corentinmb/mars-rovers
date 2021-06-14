@@ -20,7 +20,7 @@ public class Rover {
         this.orientation = orientation;
     }
 
-    public void startInstructions(List<Instruction> instructions){
+    public void executeInstructions(List<Instruction> instructions){
         instructions.forEach(this::move);
     }
 

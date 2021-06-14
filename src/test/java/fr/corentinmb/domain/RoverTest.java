@@ -48,7 +48,7 @@ class RoverTest
     ){
         Rover rover = new Rover(mars, 1, 1, orientation);
 
-        rover.startInstructions(List.of(Instruction.M));
+        rover.executeInstructions(List.of(Instruction.M));
 
         assertThat(rover.getX()).isEqualTo(expectedX);
         assertThat(rover.getY()).isEqualTo(expectedY);
@@ -67,7 +67,7 @@ class RoverTest
     ){
         Rover rover = new Rover(mars, 1, 1, initialOrientation);
 
-        rover.startInstructions(List.of(Instruction.L));
+        rover.executeInstructions(List.of(Instruction.L));
 
         assertThat(rover.getOrientation()).isEqualTo(expectedOrientation);
     }
@@ -85,8 +85,55 @@ class RoverTest
     ){
         Rover rover = new Rover(mars, 1, 1, initialOrientation);
 
-        rover.startInstructions(List.of(Instruction.R));
+        rover.executeInstructions(List.of(Instruction.R));
 
         assertThat(rover.getOrientation()).isEqualTo(expectedOrientation);
+    }
+
+    @Test
+    void shouldExecuteInstructionsCorrectlyFirstInput(){
+        Rover rover = new Rover(mars, 1, 2, Orientation.N);
+
+        rover.executeInstructions(
+            List.of(
+                Instruction.L,
+                Instruction.M,
+                Instruction.L,
+                Instruction.M,
+                Instruction.L,
+                Instruction.M,
+                Instruction.L,
+                Instruction.M,
+                Instruction.M
+            )
+        );
+
+        assertThat(rover.getX()).isEqualTo(1);
+        assertThat(rover.getY()).isEqualTo(3);
+        assertThat(rover.getOrientation()).isEqualTo(Orientation.N);
+    }
+
+    @Test
+    void shouldExecuteInstructionsCorrectlySecondInput(){
+        Rover rover = new Rover(mars, 3, 3, Orientation.E);
+
+        rover.executeInstructions(
+            List.of(
+                Instruction.M,
+                Instruction.M,
+                Instruction.R,
+                Instruction.M,
+                Instruction.M,
+                Instruction.R,
+                Instruction.M,
+                Instruction.R,
+                Instruction.R,
+                Instruction.M
+            )
+        );
+
+        assertThat(rover.getX()).isEqualTo(5);
+        assertThat(rover.getY()).isEqualTo(1);
+        assertThat(rover.getOrientation()).isEqualTo(Orientation.E);
     }
 }
