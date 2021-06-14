@@ -46,7 +46,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>${package}.App</mainClass>
+              <mainClass>fr.corentinmb.App</mainClass>
             </manifest>
           </archive>
         </configuration>
