@@ -2,8 +2,8 @@ package fr.corentinmb.domain;
 
 public enum Orientation {
     N("North"),
-    E("South"),
-    S("East"),
+    E("East"),
+    S("South"),
     W("West");
 
     private final String label;

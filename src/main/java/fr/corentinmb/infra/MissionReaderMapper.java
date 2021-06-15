@@ -1,5 +1,8 @@
 package fr.corentinmb.infra;
 
+import fr.corentinmb.domain.Instruction;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MissionReaderMapper {
@@ -29,5 +32,15 @@ public class MissionReaderMapper {
             }
         }
         return rawMissionValues;
+    }
+
+    public static List<Instruction> map(String instructions) {
+        char[] chars = instructions.toCharArray();
+
+        List<Instruction> instructionsList = new ArrayList<>();
+        for (char c: chars) {
+            instructionsList.add(Instruction.valueOf(String.valueOf(c)));
+        }
+        return instructionsList;
     }
 }
